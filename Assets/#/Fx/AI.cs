@@ -7,16 +7,31 @@ using UnityEngine;
 public class AI : Creature {
     public float[] attackCD = new[] { 5f };
     public string[] attackPreb=new[] { "Fire" };
-    public Animator ani;
-    Rigidbody2D rigid;
-    Collider2D cd;
+    public Rigidbody2D rigid;
+    public Collider2D cd;
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        dir = -dir;
+    }
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         cd = GetComponent<Collider2D>();
         ani = GetComponentInChildren<Animator>();
+        attackFrame = (int)(attackFrame*Random.Range(0.6f, 1.4f));
+        changeDirFrame = (int)(changeDirFrame *Random.Range(0.6f, 1.4f));
     }
-	void Update () {
+    int dir = 1;
+    public int attackFrame = 450, changeDirFrame = 300;
+    int afc=0, cdfc=0;
+
+	void FixedUpdate ()
+    {
+        if (Time.frameCount % attackFrame == afc)
+        {
+            Fire();
+            afc = Random.Range(0, attackFrame);
+        }
         if (player.SAN <= 0 || player.HP <= 0 || player.VL <= 0 || player.INT <= 0)
         {
             Instantiate(Resources.Load("DestroyPS"), transform.position, transform.rotation);
@@ -31,12 +46,17 @@ public class AI : Creature {
 
         //Update Move
         float v0 = 0;
-        if (Input.GetAxis("Horizontal") > 0.1f)
+        if (Time.frameCount % changeDirFrame == cdfc)
+        {
+            dir = Random.Range(-1, 2);
+            cdfc = Random.Range(0, changeDirFrame);
+        }
+        if (dir > 0.1f)
         {
             transform.rotation = Quaternion.identity;
             v0 = 1;
         }
-        else if (Input.GetAxis("Horizontal") < -0.1f)
+        else if (dir < -0.1f)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
             v0 = -1;
@@ -45,18 +65,6 @@ public class AI : Creature {
         var rv = rigid.velocity;
         rv.x = v0;
         rigid.velocity = rv;
-        //Update Jump
-        if (player.abilities.Contains("Jump") && Input.GetButtonDown("Jump"))
-        {
-            var x = Physics2D.RaycastAll(cd.bounds.center, Vector2.down, cd.bounds.extents.y + 0.1f, 1 << 8);
-           // if (x.Length > 0 & Time.time - lastJumpTime > 0.3f)
-            {
-             //   lastJumpTime = Time.time;
-                rigid.AddForce(300 * Vector2.up);
-            }
-        }
-        if (Input.GetButtonDown("Fire"))
-            player.Fire();
     }
 
 

@@ -10,16 +10,20 @@ public class Creature : MonoBehaviour {
     public static Creature player;
     public float usingST = 0;
     public Animator ani;
-    void Start()
+    void Awake()
     {
         ani = GetComponent<Animator>();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         print(collision.relativeVelocity + "(" + collision.relativeVelocity.magnitude+","+collision.gameObject.name+"@"+name+")");
-
+        
         //踩//
         var rg = collision.rigidbody;
+        if (rg&&rg.GetComponent<PlayerControl>()!=null)
+        {
+            rg.GetComponent<Creature>().HP -= 0.5f;
+        }
         if (rg) {
             int rc = (int)rg.velocity.y / 4;
             if (rc < 0)
@@ -44,7 +48,7 @@ public class Creature : MonoBehaviour {
         
         if(transform.position.x>300)
             transform.DOMoveX(1, 0);
-        print("ST" + usingST);
+       // print("ST" + usingST);
         if(usingST>0)
         {
             ST = Mathf.Clamp(ST- 25f * 20f / (HP+SAN) * Time.deltaTime* usingST,0,100);
