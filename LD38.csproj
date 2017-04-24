@@ -103,6 +103,7 @@
     <Compile Include="Assets\#\Core\CameraFollow.cs" />
     <Compile Include="Assets\#\Core\Creature.cs" />
     <Compile Include="Assets\#\Core\PlayerControl.cs" />
+    <Compile Include="Assets\#\DMG.cs" />
     <Compile Include="Assets\#\Fx\AI.cs" />
     <Compile Include="Assets\#\Fx\DestroyAfterSecs.cs" />
     <Compile Include="Assets\#\Fx\Fx.cs" />
@@ -112,6 +113,8 @@
     <Compile Include="Assets\#\GameEvents\EventsLib.cs" />
     <Compile Include="Assets\#\GameEvents\ProDisappear.cs" />
     <Compile Include="Assets\#\GameStart\PressToStart.cs" />
+    <Compile Include="Assets\#\ONOFF.cs" />
+    <Compile Include="Assets\#\SanAttack.cs" />
     <Compile Include="Assets\#\UI\ControlMsgUI.cs" />
     <Compile Include="Assets\#\UI\MsgUI.cs" />
     <Compile Include="Assets\#\UI\ValueUI.cs" />

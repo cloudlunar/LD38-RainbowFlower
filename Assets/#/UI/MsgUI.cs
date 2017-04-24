@@ -43,9 +43,11 @@ public class MsgUI : MonoBehaviour {
     {
         spr.raycastTarget = false;
         titleUI.text = contUI.text = "";
+        VoidDeg c=null;
+        if (callbacks.Count >= 1) 
+             c = callbacks.Dequeue();
         DOTween.Sequence().Append(spr.DOFade(0,0.3f)).AppendCallback(()=> {
 
-            var c = callbacks.Dequeue();
             if (c!=null)
                 c();
             isShown = false;

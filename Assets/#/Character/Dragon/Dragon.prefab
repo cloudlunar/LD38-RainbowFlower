@@ -252,6 +252,9 @@ GameObject:
   - component: {fileID: 4466244216142242}
   - component: {fileID: 95448450876653804}
   - component: {fileID: 114032160822314288}
+  - component: {fileID: 50816641340766586}
+  - component: {fileID: 61717879628934906}
+  - component: {fileID: 114129089439764290}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Untagged
@@ -507,7 +510,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609751015672426}
-  m_LocalRotation: {x: 0, y: 0, z: 0.05115405, w: 0.9986908}
+  m_LocalRotation: {x: 0, y: 0, z: 0.015880948, w: 0.99987394}
   m_LocalPosition: {x: 1.000017, y: -0.0000035762787, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -518,7 +521,7 @@ Transform:
   - {fileID: 4938451714201770}
   m_Father: {fileID: 4733901319885106}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 5.8640003}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 1.82}
 --- !u!4 &4165528126788384
 Transform:
   m_ObjectHideFlags: 1
@@ -635,8 +638,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1594626520454946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 76.96, y: -696.06, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4917237955503370}
   - {fileID: 4733901319885106}
@@ -3297,6 +3300,51 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!50 &50816641340766586
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594626520454946}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &61717879628934906
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594626520454946}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.63, y: 4.48}
+  m_EdgeRadius: 0
 --- !u!95 &95448450876653804
 Animator:
   serializedVersion: 3
@@ -3326,7 +3374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.31000888
+  m_Length: 0.3100029
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4797322099319244}
   m_AttachedIK: {fileID: 0}
@@ -3342,7 +3390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.5300024
+  m_Length: 0.53000903
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4737391974796838}
   m_AttachedIK: {fileID: 0}
@@ -3454,7 +3502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 1.0000172
+  m_Length: 1.0000206
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4112730769743628}
   m_AttachedIK: {fileID: 0}
@@ -3490,6 +3538,35 @@ MonoBehaviour:
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 0}
   m_AttachedIK: {fileID: 0}
+--- !u!114 &114129089439764290
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1594626520454946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 862b9aa2edf61094c9c8091edff457fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 3
+  SAN: 3
+  INT: 3
+  VL: 3
+  LV: 1
+  ST: 100
+  abilities: []
+  usingST: 0
+  ani: {fileID: 0}
+  attackCD:
+  - 5
+  attackPreb:
+  - Fire
+  rigid: {fileID: 0}
+  cd: {fileID: 0}
+  range: 1
+  attackFrame: 60
+  changeDirFrame: 300
 --- !u!114 &114149929411959518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3502,7 +3579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.8300064
+  m_Length: 0.8300111
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4410246802184262}
   m_AttachedIK: {fileID: 0}
@@ -3522,7 +3599,7 @@ MonoBehaviour:
   m_Materials:
   - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -19
   m_Bones: []
   m_BoneTransforms:
   - {fileID: 4201146175118194}
@@ -3539,7 +3616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.6000045
+  m_Length: 0.60001427
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4946313425573630}
   m_AttachedIK: {fileID: 0}
@@ -3657,7 +3734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.600004
+  m_Length: 0.60000795
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4338561099800420}
   m_AttachedIK: {fileID: 0}
@@ -3673,7 +3750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.5300024
+  m_Length: 0.52999544
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4531800861804430}
   m_AttachedIK: {fileID: 0}
@@ -3689,7 +3766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.60000414
+  m_Length: 0.600008
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4047186319214718}
   m_AttachedIK: {fileID: 0}
@@ -3721,7 +3798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.60000426
+  m_Length: 0.60001004
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4184301644897124}
   m_AttachedIK: {fileID: 0}
@@ -3775,7 +3852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.5300022
+  m_Length: 0.52999663
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4930647754599898}
   m_AttachedIK: {fileID: 0}
@@ -3791,7 +3868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.31000865
+  m_Length: 0.31002396
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4639252621361906}
   m_AttachedIK: {fileID: 0}
@@ -3826,7 +3903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.8300181
+  m_Length: 0.8300044
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4550555361410786}
   m_AttachedIK: {fileID: 0}
@@ -3954,7 +4031,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.5300024
+  m_Length: 0.53000283
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4528881292397510}
   m_AttachedIK: {fileID: 0}
@@ -4008,7 +4085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.3100081
+  m_Length: 0.31001204
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4264301362630440}
   m_AttachedIK: {fileID: 0}
@@ -4040,7 +4117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Length: 0.31000847
+  m_Length: 0.3100175
   m_Child: {fileID: 0}
   m_ChildTransform: {fileID: 4920656441572548}
   m_AttachedIK: {fileID: 0}
@@ -4142,7 +4219,7 @@ SkinnedMeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -19
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0

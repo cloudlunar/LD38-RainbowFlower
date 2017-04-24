@@ -14,21 +14,26 @@ public class Creature : MonoBehaviour {
     {
         ani = GetComponent<Animator>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
-        print(collision.relativeVelocity + "(" + collision.relativeVelocity.magnitude+","+collision.gameObject.name+"@"+name+")");
         
         //踩//
         var rg = collision.rigidbody;
-        if (rg&&rg.GetComponent<PlayerControl>()!=null)
+        float rc = rg?rg.velocity.y:0f;
+        if (rg&&rc<0)
         {
-            rg.GetComponent<Creature>().HP -= 0.5f;
+                print(rg.name+"踩了"+name+rc+"#"+HP);
+                HP -= 0.5f ;
+                return;
+            
         }
-        if (rg) {
-            int rc = (int)rg.velocity.y / 4;
-            if (rc < 0)
+        else
+        {
+
+            if (rg && rg.GetComponent<PlayerControl>() != null)
             {
-                HP += 0.5f * rc;
+                print(rg.name + "被伤害" + name);
+                rg.GetComponent<Creature>().HP -= 0.5f;
                 return;
             }
         }
@@ -36,6 +41,7 @@ public class Creature : MonoBehaviour {
         int c = (int)collision.relativeVelocity.y / 10;
         if (c > 0)
         {
+            print(collision.collider.name + "撞击了" + name);
             HP -= 0.5f * c;
         }
         
@@ -60,7 +66,15 @@ public class Creature : MonoBehaviour {
     }
     public virtual void Fire()
     {
-        ani.SetTrigger("attack");
+        if(abilities.Contains("Attack")&&ST>30)
+        {
+            ani.SetTrigger("attack");
+            var g = Instantiate(Resources.Load("Ice"), transform.position, Quaternion.identity) as GameObject;
+            Physics2D.IgnoreCollision(g.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            g.GetComponent<Rigidbody2D>().AddForce(400 * Vector3.right*(transform.rotation.eulerAngles.y>90?-1:1)/3f*VL);
+            ST -= 30;
+
+        }
     }
 	
 }

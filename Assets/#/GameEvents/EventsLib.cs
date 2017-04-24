@@ -19,7 +19,7 @@ public class EventsLib : MonoBehaviour
             PlayerPrefs.SetInt("Win", value);
         }
     }
-    public static GameEvent[] lib=new[]{
+    public static GameEvent[] lib = new[]{
         //Note系列:纸条可能发生一些未知的数值变动//
         //0// 
         new GameEvent{
@@ -131,7 +131,7 @@ public class EventsLib : MonoBehaviour
         new GameEvent{
             title="Omen",
             msg="Run!!!",
-            sana=-1f,vla=3
+            sana=-1f,vla=1f
         },
         //17// 
         new GameEvent{
@@ -153,7 +153,7 @@ public class EventsLib : MonoBehaviour
         //20// 
         new GameEvent{
             title="Omen",
-            msg="ONE TWO THREE"            
+            msg="ONE TWO THREE"
         },
         
         //20个Note//
@@ -161,7 +161,7 @@ public class EventsLib : MonoBehaviour
         new GameEvent{
             title="Note",
             msg="<i>\"All things in their being are good for something.\"</i>",
-            inta=1,sana=1,vla=1,hpa=1
+            inta=1,sana=1,vla=0.5f,hpa=1
         },
         //22// 
         new GameEvent{
@@ -215,7 +215,7 @@ public class EventsLib : MonoBehaviour
         new GameEvent{
             title="Note",
             msg="<i>\"UP UP DOWN DOWN LEFT RIGHT LEFT RIGHT A A B B SELECT START\"</i>",
-            sana=1,inta=3,hpa=3,vla=1
+            sana=1,inta=3,hpa=3,vla=0.5f
         },
         //31// 
         new GameEvent{
@@ -227,13 +227,13 @@ public class EventsLib : MonoBehaviour
         new GameEvent{
             title="Note",
             msg="<i>\"*#*##*#*\"</i>"
-            
+
         },
         //33// 
         new GameEvent{
             title="Note",
             msg="<i>\"$30\"</i>"
-            
+
         },
         //34// 
         new GameEvent{
@@ -244,7 +244,7 @@ public class EventsLib : MonoBehaviour
         new GameEvent{
             title="Note",
             msg="<i>\"20160423\"</i>"
-            
+
         },
         //36// 
         new GameEvent{
@@ -268,14 +268,70 @@ public class EventsLib : MonoBehaviour
         new GameEvent{
             title="Note",
             msg="<i>\"A small world\"</i>"
-        
+
         },
         //40// 
         new GameEvent{
             title="Note",
             msg="<i>\"Let me think——Junyang Xiao\"</i>",
-            sana=1,inta=3,hpa=3,vla=1
+            sana=1,inta=3,hpa=3,vla=0.5f
         },
+        //41:七个能力//
+        new GameEvent
+        {
+            title="Ability",
+            msg="You have been blessed and got the ability: \n<b>jump(SPACE)</b>",
+            abilities=new [] {"Jump"}
+        },
+        //42:七个能力//
+        new GameEvent
+        {
+            title="Ability",
+            msg="You have been blessed",
+            vla=1f,hpa=2,sana=2
+        },
+        //43:七个能力//
+        new GameEvent
+        {
+            title="Ability",
+            msg="You have been blessed and got the ability: \n<b>swim</b>",
+            abilities=new [] {"Swim"}
+        },
+        //44:七个能力//
+        new GameEvent
+        {
+            title="Ability",
+            msg="You have been blessed and got the ability: \n<b>fly(↑)</b>",
+            abilities=new [] {"Fly"}
+        },
+        //45:七个能力//
+        new GameEvent
+        {
+            title="Ability",
+            msg="You have been blessed",
+            hpa=10
+        },
+        //46:七个能力//
+        new GameEvent
+        {
+            title="Ability",
+            msg="You have been blessed and got the ability: \n<b>attack(RB)</b>",
+            abilities=new [] {"Attack"}
+        },
+        //47:七个能力//
+        new GameEvent
+        {
+            title="Ability",
+            msg="You have been blessed",
+            sana=10,hpa=10,vla=10,inta=10
+        },
+        //48红心//
+        new GameEvent
+        {
+            title="Heart",
+            msg="You have been healed",
+            hpa=1
+        }
     };
 
 }

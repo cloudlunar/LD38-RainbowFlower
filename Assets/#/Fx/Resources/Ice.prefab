@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4233845461735716}
   - component: {fileID: 58084875393662332}
   - component: {fileID: 114485709280518650}
+  - component: {fileID: 50543061660057548}
   m_Layer: 0
   m_Name: Ice
   m_TagString: Untagged
@@ -104,6 +105,26 @@ Transform:
   m_Father: {fileID: 4233845461735716}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!50 &50543061660057548
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130083200656844}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!58 &58084875393662332
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -146,7 +167,7 @@ MonoBehaviour:
   hpa: -0.5
   sana: 0
   vla: 0
-  lifetime: 5
+  lifetime: 1.5
 --- !u!114 &114541895481345260
 MonoBehaviour:
   m_ObjectHideFlags: 1

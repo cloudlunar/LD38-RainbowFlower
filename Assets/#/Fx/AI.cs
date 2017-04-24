@@ -9,12 +9,16 @@ public class AI : Creature {
     public string[] attackPreb=new[] { "Fire" };
     public Rigidbody2D rigid;
     public Collider2D cd;
-    private void OnCollisionEnter2D(Collision2D collision)
+    public float range = 10;
+    Vector3 initPos;
+    public void OnCollisionEnter2D(Collision2D collision)
     {
+        base.OnCollisionEnter2D(collision);
         dir = -dir;
     }
     void Start()
     {
+        initPos = transform.position;
         rigid = GetComponent<Rigidbody2D>();
         cd = GetComponent<Collider2D>();
         ani = GetComponentInChildren<Animator>();
@@ -32,14 +36,25 @@ public class AI : Creature {
             Fire();
             afc = Random.Range(0, attackFrame);
         }
-        if (player.SAN <= 0 || player.HP <= 0 || player.VL <= 0 || player.INT <= 0)
+        if (SAN <= 0 || HP <= 0 || VL <= 0 || INT <= 0)
         {
             Instantiate(Resources.Load("DestroyPS"), transform.position, transform.rotation);
             foreach(var x in GetComponentsInChildren<SpriteMeshInstance>())
             {
-                DOTween.ToAlpha(()=>x.color,(r)=>x.color=r,0,2.5f);
+                DOTween.ToAlpha(()=>x.color,(r)=>x.color=r,0,1f);
             }
-            DOTween.Sequence().AppendInterval(3).AppendCallback(() => Destroy(gameObject));
+            var gb = gameObject;
+            DOTween.Sequence().AppendInterval(1).AppendCallback(() => Destroy(gb));
+            if (Random.Range(0f, 1f) < 0.8f)
+            {
+                var r=Instantiate(Resources.Load("heart"), transform.position, transform.rotation) as GameObject;
+                r.GetComponent<Rigidbody2D>().AddForce(50 * Random.insideUnitCircle);
+            }
+            if (Random.Range(0f, 1f) < 0.2f)
+            {
+                var r = Instantiate(Resources.Load("heart"), transform.position, transform.rotation) as GameObject;
+                r.GetComponent<Rigidbody2D>().AddForce(50 * Random.insideUnitCircle);
+            }
             Destroy(this);
             return;
         }
@@ -51,6 +66,8 @@ public class AI : Creature {
             dir = Random.Range(-1, 2);
             cdfc = Random.Range(0, changeDirFrame);
         }
+        if (transform.position.x < initPos.x-range/2) { dir = 1; }
+        if (transform.position.x > initPos.x + range/2) { dir = -1; }
         if (dir > 0.1f)
         {
             transform.rotation = Quaternion.identity;
@@ -61,7 +78,7 @@ public class AI : Creature {
             transform.rotation = Quaternion.Euler(0, 180, 0);
             v0 = -1;
         }
-        v0 *= Creature.player.VL / 2f;
+        v0 *= VL / 2f;
         var rv = rigid.velocity;
         rv.x = v0;
         rigid.velocity = rv;

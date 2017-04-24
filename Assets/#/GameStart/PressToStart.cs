@@ -7,9 +7,11 @@ using UnityEngine.UI;
 
 public class PressToStart : MonoBehaviour {
     public static int nowEnd = 0;
+    public static bool inited = false;
     private void Start()
     {
-        for(int i=1;i<=7;++i)
+        inited = true;
+        for (int i=1;i<=7;++i)
         {
             var gb = GameObject.Find("RF (" + i + ")");
             var btn = gb.GetComponentInChildren<Button>();

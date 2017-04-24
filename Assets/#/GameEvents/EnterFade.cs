@@ -27,7 +27,7 @@ public class EnterFade : MonoBehaviour {
     private void OnDrawGizmos()
     {
         var b = GetComponent<Collider2D>().bounds;
-        Gizmos.color = Color.green * 0.01f;
+        Gizmos.color = Color.green * 0.4f;
         Gizmos.DrawCube(b.center, b.size);
     }
 #endif

@@ -12,15 +12,18 @@ public class PlayerControl : MonoBehaviour {
         rigid = GetComponent<Rigidbody2D>();
         cd = GetComponent<Collider2D>();
         player = Creature.player = GetComponent<Creature>();
-        player.abilities.Add("Jump");
-        
-       // player.abilities.Add("Fly");
-       player.abilities.Add("Swim");
 
     }
     float lastJumpTime = 0;
     void Update() {
         if (!Creature.player) return;
+#if UNITY_EDITOR
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            player.SAN = player.HP = player.VL = player.INT = 10;
+            player.abilities = new List<string> { "Jump", "Fly", "Attack", "Swim" };
+        }
+#endif
         //Update Death//
         if(player.SAN<=0||player.HP<=0||player.VL<=0||player.INT<=0)
         {

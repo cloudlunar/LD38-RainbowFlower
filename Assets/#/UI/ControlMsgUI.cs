@@ -2,11 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ControlMsgUI : MonoBehaviour {
     static Text controlMsgUI;
     void Start () {
+        if (!PressToStart.inited)
+            SceneManager.LoadScene(0);
         controlMsgUI= GetComponent<Text>();
 
     }

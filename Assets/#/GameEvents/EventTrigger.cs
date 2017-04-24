@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using Anima2D;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,7 +68,7 @@ public class EventTrigger : MonoBehaviour {
     {
         if(cnt>0){
             curcd += Time.deltaTime;
-            print(name+":"+curcd);
+            //print(name+":"+curcd);
             if((curcd>cd&&!needPress || Input.GetButtonDown("Interact")&&needPress)&& curcd < 1000000)
             {
                 curcd = 1000003;
@@ -81,7 +82,14 @@ public class EventTrigger : MonoBehaviour {
                         GetComponent<ParticleSystem>().Play();
                     }
                     var gb = gameObject;
-                    DOTween.Sequence().Append(GetComponent<SpriteRenderer>().DOFade(0f, 0.3f)).AppendCallback(() => { Destroy(gb); });
+                    var sp = GetComponent<SpriteRenderer>();
+                    if(sp)sp.DOFade(0f, 1f);
+                    var sg = GetComponents<SpriteMeshInstance>();
+                    foreach(var x in sg)
+                    {
+                        DOTween.ToAlpha(() => x.color, (z) => x.color = z, 0, 0.3f);
+                    }
+                    DOTween.Sequence().AppendInterval(1f).AppendCallback(() => { Destroy(gb); });
                 }
             }
         }else
