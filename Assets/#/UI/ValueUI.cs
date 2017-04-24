@@ -21,27 +21,34 @@ public class ValueUI : MonoBehaviour {
 	void Update () {
         if (viewee == null)
             viewee = Creature.player;
+        var dmgruned= false;
         if(viewee.HP< hpv.value)
         {
             red.DOKill();
             DOTween.Sequence().Append(red.DOColor(Color.red*0.6f, 0.3f)).Append(red.DOFade(0, 1f));
+            dmgruned = true;
         }
         if (viewee.SAN < sanv.value)
         {
             red.DOKill();
             DOTween.Sequence().Append(red.DOColor(new Color(0.8f, 0f, 1f, 0.6f), 0.3f)).Append(red.DOFade(0, 1f));
+            dmgruned = true;
         }
         if (viewee.VL < vltv.value)
         {
             red.DOKill();
             DOTween.Sequence().Append(red.DOColor(new Color(0, 0, 0.7f, 0.6f) , 0.3f)).Append(red.DOFade(0, 1f));
+            dmgruned = true;
         }
 
         if (viewee.INT < intv.value)
         {
             red.DOKill();
             DOTween.Sequence().Append(red.DOColor(new Color(0,0.5f,0,0.6f), 0.3f)).Append(red.DOFade(0, 1f));
+            dmgruned = true;
         }
+        if(dmgruned)
+            AudioManager.ins.PlayAudio("ouch", 1, Random.Range(0.7f, 1.3f));
         hpv.value = viewee.HP;        
         sanv.value = viewee.SAN;
         intv.value = viewee.INT;
